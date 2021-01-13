@@ -9,8 +9,14 @@ const connect = function() {
   });
   // interpret incoming data as text
   conn.setEncoding('utf8');
-  
-  // 
+
+  // event handler for any incoming communication from the server, error, score update etc...
+  // this is performed async and is added to the backburner 
+  conn.on('data', (data) => {
+    console.log('Server says: ', data);
+  });
+
+  // return the conn object to where it is called from this function/needed
   return conn;
 }
 
