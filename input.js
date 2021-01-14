@@ -54,7 +54,19 @@ const handleUserInput = function(stdinInput) {
 
     setTimeout(() => {
       connection.write('Move: right');
-    }, 350);
+    }, 350); 
+  }
+
+  // q keybind for snake to say AAAA
+  if (stdinInput === 'q') {
+    console.log("Pressed! Q");
+    connection.write('Say: AAAAAA');
+  }
+
+   // q keybind for snake to say AAAA
+   if (stdinInput === 'e') {
+    console.log("Pressed! Q");
+    connection.write('Say: DIEEEE');
   }
 };
 
