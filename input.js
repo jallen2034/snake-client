@@ -63,7 +63,7 @@ const handleUserInput = function(stdinInput) {
     connection.write('Say: AAAAAA');
   }
 
-   // q keybind for snake to say AAAA
+   // q keybind for snake to say DIEE
    if (stdinInput === 'e') {
     console.log("Pressed! Q");
     connection.write('Say: DIEEEE');
