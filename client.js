@@ -22,8 +22,10 @@ const connect = function() {
   // event handler/listener which listens for connection events from the server
   // if it sends back a connect event, we can then write out commands back to the server to move our snake
   conn.on('connect', () => {
+
     // have an array of all our pssible snake moves
-    const snakeMoves = ["Move: up", "Move: left", "Move: left", "Move: up", "Move: up", "Move: up", "Move: up", "Move: left"];
+    const snakeMoves = ["Move: up", "Move: left", "Move: left", "Move: up", "Move: up", "Move: up", "Move: up", 
+    "Move: left", "Move: left", "Move: left", "Move: left", "Move: left", "Move: left", "Move: left"];
 
     // have a timer we will add each time we loop through
     let timerBetweenMoves = 0;
@@ -36,14 +38,9 @@ const connect = function() {
       setTimeout(() => {
         conn.write(snakeMoves[i]);
       }, timerBetweenMoves);
+
       timerBetweenMoves += 350;
     }
-    
-    // old method
-    // conn.write('Move: up');
-    // setTimeout(() => {
-    //   conn.write('Move: left');
-    // }, 20);
   });
 
   // event handler for any incoming communication from the server, error, score update etc...
