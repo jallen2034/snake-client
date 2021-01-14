@@ -19,29 +19,29 @@ const connect = function() {
     console.log('Connected to the server!');
   });
 
-  // event handler/listener which listens for connection events from the server
-  // if it sends back a connect event, we can then write out commands back to the server to move our snake
-  conn.on('connect', () => {
+  // // event handler/listener which listens for connection events from the server
+  // // if it sends back a connect event, we can then write out commands back to the server to move our snake
+  // conn.on('connect', () => {
 
-    // have an array of all our pssible snake moves
-    const snakeMoves = ["Move: up", "Move: left", "Move: left", "Move: up", "Move: up", "Move: up", "Move: up", 
-    "Move: left", "Move: left", "Move: left", "Move: left", "Move: left", "Move: left", "Move: left"];
+  //   // have an array of all our pssible snake moves
+  //   const snakeMoves = ["Move: up", "Move: left", "Move: left", "Move: up", "Move: up", "Move: up", "Move: up", 
+  //   "Move: left", "Move: left", "Move: left", "Move: left", "Move: left", "Move: left", "Move: left"];
 
-    // have a timer we will add each time we loop through
-    let timerBetweenMoves = 0;
+  //   // have a timer we will add each time we loop through
+  //   let timerBetweenMoves = 0;
 
-    // loop through array of potential moves to add to our snake
-    // write our moves to "throw down" our pipe to our server with the current snakemove[i]
-    // then do this at an incresing increment of time of whatever timerBetweenMoves is
-    // increment timerBetweenMoves by 20ms everytime we loop through an index of the array
-    for (let i = 0; i < snakeMoves.length; i++) {
-      setTimeout(() => {
-        conn.write(snakeMoves[i]);
-      }, timerBetweenMoves);
+  //   // loop through array of potential moves to add to our snake
+  //   // write our moves to "throw down" our pipe to our server with the current snakemove[i]
+  //   // then do this at an incresing increment of time of whatever timerBetweenMoves is
+  //   // increment timerBetweenMoves by 20ms everytime we loop through an index of the array
+  //   for (let i = 0; i < snakeMoves.length; i++) {
+  //     setTimeout(() => {
+  //       conn.write(snakeMoves[i]);
+  //     }, timerBetweenMoves);
 
-      timerBetweenMoves += 350;
-    }
-  });
+  //     timerBetweenMoves += 350;
+  //   }
+  // });
 
   // event handler for any incoming communication from the server, error, score update etc...
   // interpereter knows .on() is async code and this will wait on the backburner until the main thread finishes
