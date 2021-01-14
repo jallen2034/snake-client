@@ -13,10 +13,37 @@ const connect = function() {
 
   // event handler/listener which listens for connection events from the server
   // this allows us to ssend a reply to our server containing our snake name we want to attach to our snake
+  // add name to snake inside this event after it fires off
   conn.on('connect', () => {
-    // add name to snake inside this event after it fires off
     conn.write('Name: Yee');
     console.log('Connected to the server!');
+  });
+
+  // event handler/listener which listens for connection events from the server
+  // if it sends back a connect event, we can then write out commands back to the server to move our snake
+  conn.on('connect', () => {
+    // have an array of all our pssible snake moves
+    const snakeMoves = ["Move: up", "Move: left", "Move: left", "Move: up", "Move: up", "Move: up", "Move: up", "Move: left"];
+
+    // have a timer we will add each time we loop through
+    let timerBetweenMoves = 0;
+
+    // loop through array of potential moves to add to our snake
+    // write our moves to "throw down" our pipe to our server with the current snakemove[i]
+    // then do this at an incresing increment of time of whatever timerBetweenMoves is
+    // increment timerBetweenMoves by 20ms everytime we loop through an index of the array
+    for (let i = 0; i < snakeMoves.length; i++) {
+      setTimeout(() => {
+        conn.write(snakeMoves[i]);
+      }, timerBetweenMoves);
+      timerBetweenMoves += 350;
+    }
+    
+    // old method
+    // conn.write('Move: up');
+    // setTimeout(() => {
+    //   conn.write('Move: left');
+    // }, 20);
   });
 
   // event handler for any incoming communication from the server, error, score update etc...
