@@ -23,7 +23,7 @@ const connect = function() {
   // event handler for any incoming communication from the server, error, score update etc...
   // interpereter knows .on() is async code and this will wait on the backburner until the main thread finishes
   // this is performed async and is added to the backburner
-  // first paramater is a string which specifies the type of event we care about, we only want ot wake up and react when the type of this event is 'data'
+  // first paramater is a string which specifies the type of event we care about, we only want ot wake up and react when the type of this event sent from the server is 'data'
   conn.on('data', (data) => {
     console.log('Server says: ', data);
   });
